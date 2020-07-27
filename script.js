@@ -1,86 +1,88 @@
+// this is my questions and answers array
+
 let questions = [
     {
-        "question": "What does a milliner make and sell?",
-        "correct_answer": "Hats",
+        "question": "What is the Capital of California?",
+        "correct_answer": "Sacramento",
         "answers": [
-            "Shoes",
-            "Belts",
-            "Hats",
-            "Shirts"
+            "San Diego",
+            "Belmont",
+            "Houston",
+            "Sacramento"
         ]
     },
     {
-        "question": "Rolex is a company that specializes in what type of product?",
-        "correct_answer": "Watches",
+        "question": "What month does Christmas fall in?",
+        "correct_answer": "December",
         "answers": [
-            "Cars",
-            "Watches",
-            "Computers",
-            "Sports equipment"
+            "February",
+            "March",
+            "December",
+            "June"
         ]
     },
     {
-        "question": "What was the nickname given to the Hughes H-4 Hercules, a heavy transport flying boat which achieved flight in 1947?",
-        "correct_answer": "Spruce Goose",
+        "question": "What team does Lebron James play for currently?",
+        "correct_answer": "Los Angeles Lakers",
         "answers": [
-            "Noah&#039;s Ark",
-            "Fat Man",
-            "Trojan Horse",
-            "Spruce Goose"
+            "OKC Thunder",
+            "Cleveland Cavaliers",
+            "Dallas Mavericks",
+            "Los Angeles Lakers"
         ]
     },
     {
-        "question": "What is the romanized Arabic word for 'moon'",
-        "correct_answer": "Qamar",
+        "question": "Where is the Eiffel Tower located?",
+        "correct_answer": "France",
         "answers": [
-            "Qamar",
-            "Najma",
-            "Kawkab",
-            "Shams"
+            "Ecuador",
+            "France",
+            "Italy",
+            "Germany"
         ]
     },
     {
-        "question": "Which restaurant's mascot is a clown?",
-        "correct_answer": "McDonald's",
+        "question": "Who played Jack Sparrow in Pirates of the Caribbean?",
+        "correct_answer": "Johnny Depp",
         "answers": [
-            "Whataburger",
-            "Burger King",
-            "McDonald's",
-            "Sonic"
+            "Leonardo DiCaprio",
+            "Jared Leto",
+            "Orlando Bloom",
+            "Johnny Depp"
         ]
     },
     {
-        "question": "What is the Portuguese word for 'Brazil'",
-        "correct_answer": "Brasil",
+        "question": "Who is the founder of Facebook?",
+        "correct_answer": "Mark Zuckerberg",
         "answers": [
-            "Brazil",
-            "Brasilia",
-            "Brasil",
-            "Bras&iacute;l"
+            "Elon Musk",
+            "Jeff Bezos",
+            "Mark Zuckerberg",
+            "Mark Cuban"
         ]
     },
     {
-        "question": "According to the 2014-2015 Australian Bureau of Statistics, what percentage of Australians were born overseas?",
-        "correct_answer": "28%",
+        "question": "Who is the owner of the Los Angeles Lakers?",
+        "correct_answer": "Jeanie Buss",
         "answers": [
-            "28%",
-            "13%",
-            "20%",
-            "7%"
+            "Jeanie Buss",
+            "Magic Johnson",
+            "Shaquille O'Neal",
+            "Jim Buss"
         ]
     },
     {
-        "question": "According to the nursery rhyme, what fruit did Little Jack Horner pull out of his Christmas pie?",
-        "correct_answer": "Plum",
+        "question": "Old McDonald had what?",
+        "correct_answer": "farm",
         "answers": [
-            "Apple",
-            "Peach",
-            "Pear",
-            "Plum",
+            "house",
+            "barn",
+            "farm",
+            "boat",
         ]
     },
     {
-        "question": "Francis Bacon died from a fatal case of pneumonia while he was attempting to preserve meat by stuffing a chicken with snow.",
+        "question": "The Los Angeles Angels are located in Orange County",
         "correct_answer": "True",
         "answers": [
             "True",
@@ -88,27 +90,30 @@ let questions = [
         ]
     },
     {
-        "question": "How many notes are there on a standard grand piano?",
-        "correct_answer": "88",
+        "question": "How many innings are there in a baseball game?",
+        "correct_answer": "9",
         "answers": [
-            "98",
-            "108",
-            "78",
-            "88"
+            "10",
+            "9",
+            "8",
+            "7"
         ]
     }
 ]
+// this is what I will implement in the questions Array
 
 let currentIndex = 0
+// this will help tally the score and keep a timer on the questions portion
 let score = 0
 let seconds = 100
 let timer
-
+// this function will create new questions ont he screen when prompted to 
 const newQuestion = () => {
 
     document.getElementById('question').textContent = questions[currentIndex].question
 
     let answers = questions[currentIndex].answers
+    // this will add elements and a button to the inner html to help add answers within the domain
 
     document.getElementById('answers').innerHTML = ''
 
@@ -121,7 +126,7 @@ const newQuestion = () => {
         document.getElementById('answers').append(answerElem)
     }
 }
-
+// this function will alert the user if the answer is correct or incorrect, and will prompt an alert as well as a color to the text. 
 const getAnswer = answer => {
 
     if (answer === questions[currentIndex].correct_answer) {
@@ -139,6 +144,7 @@ const getAnswer = answer => {
     }
 
     currentIndex++
+    // this will add a new question 1 second after an answer is given, if nothing is answered result will be endGame
 
     setTimeout(() => {
         if (currentIndex < questions.length) {
@@ -148,7 +154,7 @@ const getAnswer = answer => {
         }
     }, 1000)
 }
-
+// this will create a leaderboard within the HTML to show highest score to lowest
 const endGame = () => {
     document.getElementById('trivia').innerHTML = `
       <h1 class="display-2">Game Over!</h1>
@@ -165,7 +171,7 @@ const endGame = () => {
     `
 
 }
-
+// this adds leaderboard, also turn the array into a string once it is pulled from the localstorage
 const submitScore = submission => {
     console.log(submission)
 
@@ -178,6 +184,7 @@ const submitScore = submission => {
     leaderboard.sort((a, b) => {
         return b.score - a.score
     })
+    // this is using a bootstrap element to create the visual table, creates the elemnt as a result of the endGame
 
     let tableElem = document.createElement('table')
     tableElem.className = 'table'
@@ -208,7 +215,7 @@ const submitScore = submission => {
     document.getElementById('trivia').append(tableElem)
 
 }
-
+// sets a timer within the eventlistener function, allowing the click to prompt a new question onces the interval of 1 second is cleared
 document.getElementById('startTrivia').addEventListener('click', () => {
 
     timer = setInterval(() => {
@@ -223,7 +230,8 @@ document.getElementById('startTrivia').addEventListener('click', () => {
 
     newQuestion()
 })
-
+// created a new database within the html to allow us to manipulate the element easier
+// adds an event listener to the submitScore, so when a username is entered it adds a new value as well as score. 
 document.addEventListener('click', event => {
     if (event.target.classList.contains('answer')) {
         getAnswer(event.target.dataset.answer)

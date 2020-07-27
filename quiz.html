@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="count">2:00</h1>
+    <div id="quiz"></div>
+    <button id="start">Start</button>
+    <button id="next">Next</button>
+    <div id="results"></div>
+    <script>
+       
+
+
+        
+        const startButton = document.getElementById('start')
+        const quiz = document.getElementById('quiz')
+
+
+        startButton.addEventListener('click', startTimer)
+        let count = 0
+
+        function startTimer() {
+            setInterval(() => {
+                count--
+                document.getElementById('count').textContent = count
+                setNextQuestion()
+
+
+            }, 1000)
+        }
+
+        function setNextQuestion () {
+
+        }
+
+        function selectAnswer () {
+
+        }
+        const questions = [
+            {
+                question: 'What is the capital of California?',
+                answers: [
+                    { text: 'Sacramento', correct: true},
+                    { text: 'Tampa Bay', correct: false }
+                
+                  
+                ]
+
+            }
+        ]
+
+
+        // let questions1 = [ `2`, `4`, `8`]
+
+
+        // let urQuestion = prompt(`What is 40 divided by 10?`)
+
+
+        // setTimeout(() => {
+        //     console.log('hello')
+        // }, 120000)
+    </script>
+
+</body>
+
+</html>
